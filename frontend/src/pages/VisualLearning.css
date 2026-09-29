@@ -1,0 +1,844 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: #0B1220;
+  --surface: #13293D;
+  --primary: #7C5CFC;
+  --primary-hover: #6b47ff;
+  --primary-glow: rgba(124, 92, 252, 0.25);
+  --card-bg: rgba(15, 25, 45, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --success: #2ECC71;
+  --warning: #F4B942;
+  --error: #E74C3C;
+  --text: #E6EAF6;
+  --text-muted: rgba(230, 234, 246, 0.6);
+  --text-dim: rgba(230, 234, 246, 0.4);
+  --muted: rgba(230, 234, 246, 0.58);
+  --border: rgba(230, 234, 246, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.visual-learning-app {
+  min-height: 100vh;
+  display: flex;
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(124, 92, 252, 0.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(46, 204, 113, 0.03),
+      transparent 30%
+    ),
+    var(--background);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.vl-sidebar {
+  width: 230px;
+  min-height: 100vh;
+  padding: 25px 16px;
+  border-right: 1px solid var(--border);
+  background: rgba(8, 16, 30, 0.7);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.vl-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  margin-bottom: 38px;
+}
+
+.vl-brand-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7C5CFC, #9c83ff);
+  color: white;
+  font-size: 17px;
+  box-shadow: 0 0 25px rgba(124, 92, 252, 0.3);
+}
+
+.vl-brand-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.vl-brand-tagline {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.vl-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vl-nav-item {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: rgba(230, 234, 246, 0.65);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.vl-nav-item span {
+  width: 18px;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vl-nav-item:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vl-nav-item.active {
+  color: white;
+  background: linear-gradient(90deg, #6043dc, #7C5CFC);
+  box-shadow: 0 8px 25px rgba(124, 92, 252, 0.25);
+  font-weight: 600;
+}
+
+.vl-sidebar-tip {
+  margin-top: auto;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(19, 41, 61, 0.65);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(230, 234, 246, 0.55);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.vl-sidebar-tip strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.vl-sidebar-tip span {
+  color: var(--success);
+  font-size: 18px;
+}
+
+/* =========================================
+   MAIN CONTENT AREA
+========================================= */
+
+.vl-main {
+  width: calc(100% - 230px);
+  margin-left: 230px;
+  min-height: 100vh;
+  padding: 0 45px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vl-topbar {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.vl-student-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  user-select: none;
+}
+
+.vl-student-profile:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vl-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7C5CFC, #9c83ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+}
+
+.vl-student-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.vl-profile-arrow {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.vl-header {
+  margin-bottom: 30px;
+}
+
+.vl-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.3px;
+}
+
+.vl-subtitle {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* =========================================
+   STANDALONE DRAG & DROP CONTAINER
+========================================= */
+
+.vl-single-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vl-upload-card-standalone {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.vl-dropzone {
+  border: 2px dashed rgba(124, 92, 252, 0.4);
+  border-radius: 16px;
+  background: rgba(11, 18, 32, 0.5);
+  padding: 48px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.vl-dropzone:hover,
+.vl-dropzone.dragging {
+  border-color: #7C5CFC;
+  background: rgba(124, 92, 252, 0.08);
+  box-shadow: 0 0 30px rgba(124, 92, 252, 0.2);
+}
+
+.vl-upload-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7C5CFC, #a78bfa);
+  box-shadow: 0 6px 25px rgba(124, 92, 252, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+.vl-dropzone:hover .vl-upload-icon-circle {
+  transform: scale(1.08);
+}
+
+.vl-upload-icon-circle svg {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+}
+
+.vl-drop-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.vl-drop-formats {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 0 0 22px 0;
+}
+
+.vl-browse-btn {
+  background: linear-gradient(135deg, #6842ff, #8364ff);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 34px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(104, 66, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.vl-browse-btn:hover {
+  background: linear-gradient(135deg, #7551ff, #9175ff);
+  box-shadow: 0 6px 24px rgba(104, 66, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.vl-drop-subtext {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin: 16px 0 0 0;
+}
+
+/* Uploaded Preview */
+.vl-uploaded-preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 18px;
+  background: rgba(124, 92, 252, 0.12);
+  border: 1px solid rgba(124, 92, 252, 0.35);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.vl-file-icon {
+  font-size: 24px;
+}
+
+.vl-file-info {
+  flex: 1;
+  text-align: left;
+}
+
+.vl-file-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+.vl-file-status {
+  font-size: 12px;
+  color: var(--success);
+  margin-top: 2px;
+}
+
+.vl-clear-file {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+.vl-clear-file:hover {
+  color: #ff5e5e;
+}
+
+/* Action Button */
+.vl-view-learning-standalone-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #6043dc, #7C5CFC);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 25px rgba(124, 92, 252, 0.35);
+  transition: all 0.2s ease;
+}
+
+.vl-view-learning-standalone-btn:hover {
+  background: linear-gradient(90deg, #6e4ef5, #8c6dfd);
+  box-shadow: 0 8px 30px rgba(124, 92, 252, 0.5);
+  transform: translateY(-2px);
+}
+
+.vl-view-learning-standalone-btn span {
+  font-size: 17px;
+  transition: transform 0.2s ease;
+}
+
+.vl-view-learning-standalone-btn:hover span {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   INTERACTIVE MODAL / DETAIL VIEWER
+========================================= */
+
+.vl-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 12, 24, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.vl-modal-content {
+  background: #0F1A2E;
+  border: 1px solid rgba(124, 92, 252, 0.35);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(124, 92, 252, 0.2);
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vl-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.vl-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vl-modal-badge {
+  background: linear-gradient(135deg, #6043dc, #7C5CFC);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.vl-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.vl-modal-close {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.vl-modal-close:hover {
+  color: white;
+  background: rgba(231, 76, 60, 0.2);
+  border-color: rgba(231, 76, 60, 0.4);
+}
+
+.vl-modal-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(11, 18, 32, 0.4);
+  overflow-x: auto;
+}
+
+.vl-modal-tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.vl-modal-tab.active {
+  background: rgba(124, 92, 252, 0.2);
+  border-color: #7C5CFC;
+  color: #ffffff;
+}
+
+.vl-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vl-modal-svg-stage {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.vl-modal-explanation-box {
+  background: rgba(19, 41, 61, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.vl-modal-exp-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vl-modal-exp-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(230, 234, 246, 0.85);
+  margin: 0;
+}
+
+.vl-modal-key-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.vl-modal-point {
+  background: rgba(10, 18, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+  .vl-sidebar {
+    display: none;
+  }
+  .vl-main {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 20px 40px;
+  }
+}
+
+/* =========================================
+   DYNAMIC AI DIAGRAM & ENHANCED UPLOAD STYLES
+========================================= */
+
+.vl-dropzone.disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.vl-upload-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: vlSpin 0.75s linear infinite;
+  display: inline-block;
+}
+
+@keyframes vlSpin {
+  to { transform: rotate(360deg); }
+}
+
+.vl-processing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a78bfa;
+  font-weight: 500;
+  font-size: 12.5px;
+}
+
+.vl-pulsing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a78bfa;
+  display: inline-block;
+  animation: vlPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes vlPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.vl-ai-success-banner {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  color: #2ecc71;
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+.vl-ai-diagram-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vl-ai-diagram-svg {
+  max-width: 100%;
+  max-height: 330px;
+  overflow: visible;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.05));
+}
+
+.vl-ai-fallback-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.vl-ai-central-concept-chip {
+  background: rgba(124, 92, 252, 0.15);
+  border: 1px solid rgba(124, 92, 252, 0.4);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.vl-ai-central-concept-chip span {
+  color: #a78bfa;
+  margin-right: 4px;
+}
+
+.vl-ai-exam-hook-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(217, 119, 6, 0.06));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.vl-ai-hook-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.vl-ai-hook-content strong {
+  color: #fbbf24;
+  font-size: 13.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.vl-ai-hook-content p {
+  margin: 0;
+  color: #fef3c7;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.vl-ai-node-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.vl-ai-node-card {
+  background: rgba(10, 18, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: all 0.2s ease;
+}
+
+.vl-ai-node-card:hover {
+  border-color: rgba(124, 92, 252, 0.45);
+  transform: translateY(-1px);
+}
+
+.vl-ai-node-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.vl-ai-node-chip {
+  background: rgba(124, 92, 252, 0.2);
+  color: #a78bfa;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.vl-ai-node-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.vl-ai-node-desc {
+  font-size: 12px;
+  color: rgba(230, 234, 246, 0.7);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.vl-ai-connections-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.vl-ai-conn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 25, 45, 0.85);
+  border: 1px solid rgba(124, 92, 252, 0.3);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11.5px;
+}
+
+.vl-ai-conn-from, .vl-ai-conn-to {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.vl-ai-conn-rel {
+  color: #a78bfa;
+  font-size: 11px;
+}
+
